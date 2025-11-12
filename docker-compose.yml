@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  swagger-to-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: swagger-to-mcp-server
+    ports:
+      - "4000:4000"
+    environment:
+      - MCP_PORT=4000
+    volumes:
+      # Mount custom swagger file (optional)
+      - ./petstore.yaml:/app/petstore.yaml:ro
+      # Mount custom .env file if it exists
+      - ./.env:/app/.env:ro
+    restart: unless-stopped
+    networks:
+      - mcp-network
+
+  # Example: Using with custom swagger file
+  swagger-to-mcp-custom:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: swagger-to-mcp-custom
+    ports:
+      - "4001:4000"
+    environment:
+      - MCP_PORT=4000
+    volumes:
+      # Mount your custom swagger file
+      - ./your-api.yaml:/app/your-api.yaml:ro
+    command: ["node", "server.js", "--swagger=/app/your-api.yaml"]
+    restart: unless-stopped
+    networks:
+      - mcp-network
+    profiles:
+      - custom
+
+networks:
+  mcp-network:
+    driver: bridge

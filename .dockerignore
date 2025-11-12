@@ -1,0 +1,45 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Git
+.git/
+.gitignore
+
+# Environment files
+.env
+.env.*
+
+# Generated files
+mcp.json
+
+# Docker files
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Documentation
+README.md
+LICENSE
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+.nyc_output/
+tests/
+
+# Build outputs
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db

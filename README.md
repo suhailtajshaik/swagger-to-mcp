@@ -12,13 +12,27 @@ Convert any Swagger/OpenAPI specification into a dynamic Model Context Protocol 
 
 ## Installation
 
+### Using Node.js
+
 ```bash
 pnpm install
 ```
 
+### Using Docker
+
+```bash
+# Build the Docker image
+docker build -t swagger-to-mcp .
+
+# Or use Docker Compose
+docker-compose up -d
+```
+
 ## Usage
 
-### Start the MCP server
+### Using Node.js Directly
+
+#### Start the MCP server
 
 ```bash
 pnpm start
@@ -30,16 +44,55 @@ Or with a custom Swagger file:
 node server.js --swagger=./path/to/your/spec.yaml
 ```
 
-### Generate manifest only (without starting server)
+#### Generate manifest only (without starting server)
 
 ```bash
 node server.js --swagger=./petstore.yaml --manifest-only
 ```
 
-### Use a remote Swagger URL
+#### Use a remote Swagger URL
 
 ```bash
 node server.js --swagger=https://petstore.swagger.io/v2/swagger.json
+```
+
+### Using Docker
+
+#### Run with default Petstore example
+
+```bash
+docker run -p 4000:4000 swagger-to-mcp
+```
+
+#### Run with custom Swagger file
+
+```bash
+docker run -p 4000:4000 \
+  -v $(pwd)/your-api.yaml:/app/your-api.yaml:ro \
+  swagger-to-mcp \
+  node server.js --swagger=/app/your-api.yaml
+```
+
+#### Run with Docker Compose
+
+```bash
+# Start with default configuration
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the server
+docker-compose down
+```
+
+#### Run with custom Swagger file using Docker Compose
+
+```bash
+# Start the custom profile
+docker-compose --profile custom up -d
+
+# This will run on port 4001 instead of 4000
 ```
 
 ## Configuration
