@@ -1,20 +1,57 @@
 {
   "name": "swagger-to-mcp",
   "version": "1.0.0",
-  "description": "Convert any Swagger/OpenAPI spec into a dynamic MCP server",
-  "main": "server.js",
+  "description": "Convert any Swagger/OpenAPI spec into a dynamic MCP server - use as CLI or Node.js module",
+  "main": "index.js",
   "type": "module",
+  "bin": {
+    "swagger-to-mcp": "./bin/cli.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.cjs"
+    },
+    "./lib/*": "./lib/*"
+  },
+  "files": [
+    "index.js",
+    "bin/",
+    "lib/",
+    "server.js",
+    "petstore.yaml",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "start": "node server.js --swagger=./petstore.yaml",
+    "cli": "node bin/cli.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "http://local_proxy@127.0.0.1:16142/git/suhailtajshaik/swagger-to-mcp"
+    "url": "https://github.com/suhailtajshaik/swagger-to-mcp.git"
   },
-  "keywords": ["mcp", "swagger", "openapi", "model-context-protocol"],
+  "bugs": {
+    "url": "https://github.com/suhailtajshaik/swagger-to-mcp/issues"
+  },
+  "homepage": "https://github.com/suhailtajshaik/swagger-to-mcp#readme",
+  "keywords": [
+    "mcp",
+    "swagger",
+    "openapi",
+    "model-context-protocol",
+    "api",
+    "rest",
+    "cli",
+    "converter",
+    "mcp-server"
+  ],
   "author": "",
   "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.21.1",
     "ajv": "^8.17.1",

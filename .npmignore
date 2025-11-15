@@ -1,0 +1,58 @@
+# Development files
+.git/
+.gitignore
+.env
+.env.*
+
+# Docker files
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+.nyc_output/
+tests/
+test/
+*.test.js
+*.spec.js
+
+# Build outputs
+dist/
+build/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Documentation (except README)
+docs/
+
+# Examples (we'll keep this for npm package)
+# examples/
+
+# Generated files (keep mcp.json out)
+mcp.json
